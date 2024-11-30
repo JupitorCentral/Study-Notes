@@ -10,7 +10,8 @@
 ![헤더 테스트](#헤더)
 
 
-![alt text](<Screenshot 2024-11-30 at 11.41.59 AM.png>)
+![alt text](<../.github/images/Screenshot 2024-11-30 at 11.41.59 AM.png>)
+
 
 ### 헤더
 
