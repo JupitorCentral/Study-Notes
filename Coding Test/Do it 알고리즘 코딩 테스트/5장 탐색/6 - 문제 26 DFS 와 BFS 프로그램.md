@@ -82,7 +82,7 @@ public class App {
             int current = queue.peek();
 
             // 현재 노드에 대해서 계산할 수 있음
-            // 만
+            // queue 의 첫번째 원소가 방문하지 않았다면 해당 노드에 대해서 검색
             if (!visited[current]) {
                 // 만약 현재 노드가 방문했다면
                 visited[current] = true;
