@@ -3,6 +3,40 @@
 ## ArrayList
 
 
+### Features
+
+1.	Dynamic Resizing:<br>
+	•	Unlike arrays in Java that have a fixed size, ArrayList automatically resizes itself when elements are added or removed.<br>
+	•	Internally, it increases its size by 50% when the current capacity is exceeded.<br><br>
+2.	Indexed Access:<br>
+	•	Elements can be accessed and modified using an index, just like a standard array.<br>
+	•	Indexing starts from 0.<br><br>
+3.	Maintains Insertion Order:<br>
+	•	Elements are stored and retrieved in the same order they were inserted.<br><br>
+4.	Allows Duplicates:<br>
+	•	It allows duplicate elements.<br>
+    (Like, <br>
+        list.add("Apple");<br>
+        list.add("Banana");<br>
+        list.add("Apple");)<br><br>
+5.	Non-Synchronized:<br>
+	•	ArrayList is not synchronized, meaning it is <b>not thread-safe</b> by default. If you need thread safety, you can use Collections.synchronizedList() or other concurrent alternatives like CopyOnWriteArrayList.<br><br>
+6.	Supports Generics:<br>
+	•	ArrayList can store a specific type of elements using generics, which ensures type safety at compile time.<br>
+
+
+### Initialization
+
+```java
+ArrayList<String> list = new ArrayList<>();
+```
+
+ArrayList 의 배열도 된다. 가령
+
+```java
+ArrayList<Integer>[] arrayLists = new ArrayList[10];
+
+```
 
 
 ## Deque
