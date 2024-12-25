@@ -107,3 +107,91 @@ public class App {
 모든 노드가 그래프로 인해 탐색 될 수 있음을 가정으로 한다.
 
 
+DFS 을 recursion 이 아니라 stack 을 이용해서 풀 수 있다.
+
+```java
+
+public class App {
+
+    static StringTokenizer st;
+    static StringBuilder sb;
+    static ArrayList<Integer>[] G;
+    static boolean[] visited;
+
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        sb = new StringBuilder();
+        st = new StringTokenizer(br.readLine());
+
+        int n = Integer.parseInt(st.nextToken());
+        int edges = Integer.parseInt(st.nextToken());
+        int start = Integer.parseInt(st.nextToken());
+
+        G = new ArrayList[n+1];
+        for (int i=1; i<=n; i++) {
+            G[i] = new ArrayList<>(); }
+
+        for (int i=0; i<edges; i++) {
+            st = new StringTokenizer(br.readLine());
+            int s = Integer.parseInt(st.nextToken());
+            int e = Integer.parseInt(st.nextToken());
+
+            G[s].add(e);
+            G[e].add(s);
+        }
+
+        visited = new boolean[n+1]; // 1-indexed
+        // 작은 수부터 참조 되려면 각 array 가 내림차순 정렬되어야 한다. 
+        // 그래야 앞에서부터 들어갈때 가장 먼저 조회되는 것이 가장 작은 수가 됨
+        for (int i=1; i<=n; i++) {
+            G[i].sort(((o1, o2) -> o2 - o1));
+        }
+        DFS(start);
+
+        visited = new boolean[n+1];
+        for (int i=1; i<=n; i++) {
+            Collections.sort(G[i]);
+        }
+        sb.append("\n");
+        BFS(start);
+
+        bw.write(sb.toString());
+        bw.newLine();
+        bw.flush();
+        bw.close();
+    }
+
+    public static void DFS (int start) {
+        Stack<Integer> stack = new Stack<>();
+        stack.push(start);
+
+        while (!stack.isEmpty()) {
+            int current = stack.pop();
+            if (!visited[current]) {
+                visited[current] = true;
+                sb.append(current).append(" ");
+                for (int point : G[current]) {
+                    stack.push(point);
+                }
+            }
+        }
+    }
+
+    public static void BFS (int start) {
+        Queue<Integer> q = new LinkedList<>();
+        q.add(start);
+
+        while (!q.isEmpty()) {
+            int current = q.poll();
+            if (!visited[current]) {
+                visited[current] = true;
+                sb.append(current).append(" ");
+
+                q.addAll(G[current]);
+            }
+        }
+    }
+}
+
+```
