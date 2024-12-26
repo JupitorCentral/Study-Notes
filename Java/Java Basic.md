@@ -31,8 +31,27 @@ This allows the inner class to use instance fields and methods of the outer clas
 ###	3.	It cannot have static members or methods because it depends on an instance of the outer class.
 
 
+### 배열을 index 에 따라 초기화 하기
 
+-> int\[n] = {0, 1, 2, 3... n} 
 
+``` java
+int[] arr = IntStream.range(0, n).toArray();
+
+int[] arr = new int[n+1];
+Arrays.setAll(arr, i -> i);
+```
+
+### int[] 을 특정 값으로 초기화 하기 
+
+``` java
+int[] arr = {3, 5, 7}
+```
+
+### inline variable
+``` java
+return new int[]{4, 7}
+```
 
 
 
